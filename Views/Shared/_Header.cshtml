@@ -1,0 +1,56 @@
+﻿@{
+    var userIsAuthenticated = _signInManager.IsSignedIn(User);
+    var userIsInRole = User.IsInRole("Admin");
+    Console.WriteLine($"User authenticated: {userIsAuthenticated}, User in role 'Admin': {userIsInRole}");}
+
+<div class="container-lg mb-3">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebStore</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse justify-content-xl-end">
+        <nav class="d-flex">
+        <ul class="navbar-nav flex-grow-1 ms-auto">
+            @if (_signInManager.IsSignedIn(User)){
+                    @if (!User.IsInRole("Admin"))
+                    {
+                        <li>
+                            <a class="nav-link text-dark" asp-action="Profile" asp-controller="Account" class="m-4">@User.Identity?.Name</a>
+                        </li>
+                    }
+                
+                <li>
+                    <a class="nav-link text-dark" asp-action="Index" asp-controller="Account" class="m-4">Start</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-action="Logout" asp-controller="Account" class="m-4">Logout</a>
+                </li>
+            }
+            else{
+                <li>
+                    <a class="nav-link text-dark" asp-action="Register" asp-controller="Account" class="m-4">Register</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-action="Login" asp-controller="Account" class="m-4">Login</a>
+                </li>
+            }
+            @if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin")){
+            <li>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+            </li>
+            }
+            <li>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+            </li>
+            <li>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </li>
+            
+        </ul>
+    </nav>
+    </div>
+</div>
+
+                   @* _signInManager.IsSignedIn(User) && *@

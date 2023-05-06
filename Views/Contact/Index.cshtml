@@ -1,0 +1,28 @@
+﻿@model ContactVM
+
+<h1>Contact Us</h1>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+
+<form method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="Name" placeholder="Enter your name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="Email" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" class="form-control" id="subject" name="Subject" placeholder="Enter the subject" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" name="Message" placeholder="Enter your message" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>

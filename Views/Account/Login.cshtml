@@ -1,0 +1,43 @@
+﻿@model UserRegisterVM
+@{
+    ViewData["Title"] = "LOGIN";
+}
+<div class="container-fluid">
+    <div class="d-flex justify-content-center align-items-center flex-column">
+
+        <h1 class="my-5">LOGIN</h1>
+
+
+        <form method="post" class="col-10 col-xl-6">
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                        <small class="text-danger"><span asp-validation-for="Email"></span></small>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label">Password</label>
+                        <input asp-for="Password" class="form-control" />
+                        <small class="text-danger"><span asp-validation-for="Password"></span></small>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mt-5">
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success">Login Here!</button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
