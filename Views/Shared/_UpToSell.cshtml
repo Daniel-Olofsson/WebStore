@@ -1,19 +1,42 @@
-﻿﻿<section class="up-to-sell">
+﻿@model WebStore.Models.ViewModels.ProductViewModel
+@using WebStore.Models.ViewModels
+
+
+<section class="up-to-sell">
     <div class="container">
         <div class="collection-grid">
             <div class="item-1">
-                <!-- collection-item start -->
-                <a href="#" class="collection-item">
-                    <img src="images/placeholders/369x310.svg" alt="">
-                    <div class="body">
-                        <div class="title">Apple watch collection</div>
-                        <div class="info">
-                            <div class="price">$30.00</div>
-                            <i class="add-cart fa-regular fa-cart-plus"></i>
-                        </div>
-                    </div>
-                </a>
-                <!-- collection-item end -->
+                @if (Model?.Products != null)
+                {
+                    int productCount = 0;
+                    foreach (var product in Model.Products)
+                    {
+                        if (product.CollectionStatus == "UpToSale")
+                        {
+                            <div class="item-1">
+                                <!-- collection-item start -->
+                                <a href="@Url.Action("Details", "Home", new { id = product.Id })" class="collection-item">
+                                    <img src="@product.ImageUrl" alt="">
+                                    <div class="body">
+                                        <div class="title">@product.Title</div>
+                                        <div class="info">
+                                            <div class="price">@product.Price.ToString("C")</div>
+                                            <i class="add-cart fa-regular fa-cart-plus"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- collection-item end -->
+                            </div>
+
+                            productCount++;
+
+                            if (productCount == 2)
+                            {
+                                break; // Exit the loop after displaying 2 products in the first column
+                            }
+                        }
+                    }
+                }
             </div>
             <div class="discover">
                 <!-- collection-content start -->
@@ -23,25 +46,46 @@
                         <div class="title">50% OFF</div>
                         <div class="ingress">Get the Best Price</div>
                         <div class="text">Get the best daily offer et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea taki</div>
-                        <a href="#" class="link">Discover More</a>
+                        <div class="btn-wrapper">
+                            <a href="@Url.Action("AllSaleCollectionProducts", "Home")" class="btn-outline-white mb-5 pd-5">DISCOVER MORE <i class="fa-solid fa-rotate-right"></i></a>
+                        </div>
+                        
                     </div>
                 </div>
                 <!-- collection-content end -->
             </div>
             <div class="item-2">
-                <!-- collection-item start -->
-                <a href="#" class="collection-item">
-                    <img src="images/placeholders/369x310.svg" alt="">
-                    <div class="body">
-                        <div class="title">Apple watch collection</div>
-                        <div class="info">
-                            <div class="price">$30.00</div>
-                            <i class="add-cart fa-regular fa-cart-plus"></i>
-                        </div>
-                    </div>
-                </a>
-                <!-- collection-item end -->
+                @if (Model?.Products != null)
+                {
+                    int productCount = 0;
+                    foreach (var product in Model.Products)
+                    {
+                        if (product.CollectionStatus == "UpToSale")
+                        {
+                            productCount++;
+
+                            if (productCount > 2)
+                            {
+                                <div class="item">
+                                    <!-- collection-item start -->
+                                    <a href="@Url.Action("Details", "Home", new { id = product.Id })" class="collection-item">
+                                        <img src="@product.ImageUrl" alt="">
+                                        <div class="body">
+                                            <div class="title">@product.Title</div>
+                                            <div class="info">
+                                                <div class="price">@product.Price.ToString("C")</div>
+                                                <i class="add-cart fa-regular fa-cart-plus"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <!-- collection-item end -->
+                                </div>
+                            }
+                        }
+                    }
+                }
             </div>
+
         </div>
     </div>
 </section>

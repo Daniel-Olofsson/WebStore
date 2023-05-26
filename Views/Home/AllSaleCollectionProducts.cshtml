@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WebStore.Models.ProductEntity>
+
+<section class="all-up-to-sale-products">
+    <div class="container">
+        <h1 class="collection-title text-center">All Up To Sale Products</h1>
+        <div class="row justify-content-center">
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var product in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="@Url.Action("Details", "Home", new { id = product.Id })">
+                                <img class="card-img-top" src="@product.ImageUrl" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">@product.Title</h5>
+                                    <p class="card-text price">@product.Price.ToString("C")</p>
+                                    <p class="card-text status">@product.Genre</p>
+                                    <i class="add-cart fa-regular fa-cart-plus"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-center">No products available.</p>
+            }
+        </div>
+    </div>
+</section>

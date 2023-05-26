@@ -19,6 +19,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ImageUrl)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CollectionStatus)
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -37,6 +40,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ImageUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CollectionStatus)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

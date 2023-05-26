@@ -1040,3 +1040,19 @@ footer {
         justify-self: flex-start
     }
 }
+
+/*Custom made css*/
+.product-image {
+    max-width: 200px; /* Adjust the value as needed */
+    max-height: 200px; /* Adjust the value as needed */
+
+}
+.info-product {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-wrapper {
+    margin-top: 50px;
+    padding-top: 50px;
+}
