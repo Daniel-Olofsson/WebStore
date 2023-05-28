@@ -75,6 +75,36 @@ public class AccountController : Controller
     {
         return View();
     }
+    //[Authorize]
+    //[HttpGet]
+    //public async Task<IActionResult> Profile()
+    //{
+    //    // Get the currently logged in user
+    //    var user = await _userManager.GetUserAsync(User);
+
+    //    if (user == null)
+    //    {
+    //        return NotFound();
+    //    }
+    //    var userEntity = await _identityContext.UserProfiles.FirstOrDefaultAsync(ue => ue.UserId == user.Id);
+    //    if (userEntity == null)
+    //    {
+    //        return NotFound();
+    //    }
+
+    //    // Map the user entity to the view model
+    //    var userViewModel = new UserRegisterVM
+    //    {
+    //        FirstName = userEntity.FirstName,
+    //        LastName = userEntity.LastName,
+    //        Email = user.Email!,
+    //        StreetName = userEntity.StreetName,
+    //        PostalCode = userEntity.PostalCode,
+    //        City = userEntity.City
+    //    };
+
+    //    return View(userViewModel);
+    //}
     [Authorize]
     [HttpGet]
     public async Task<IActionResult> Profile()

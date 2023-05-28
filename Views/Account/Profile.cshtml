@@ -1,38 +1,31 @@
-﻿@model UserRegisterVM
+﻿@model WebStore.Models.ViewModels.UserRegisterVM
 
-<h1>Profile</h1>
+<h1>User Profile</h1>
 
-<form asp-controller="Account" asp-action="UpdateProfile" method="post">
-    
-    <div class="form-group">
-        <label asp-for="FirstName"></label>
-        <input asp-for="FirstName" class="form-control" />
-        <span asp-validation-for="FirstName" class="text-danger"></span>
+<form method="post" action="/Account/UpdateProfile">
+    <div>
+        <label for="FirstName">First Name</label>
+        <input type="text" id="FirstName" name="FirstName" value="@Model.FirstName" />
     </div>
-    <div class="form-group">
-        <label asp-for="LastName"></label>
-        <input asp-for="LastName" class="form-control" />
-        <span asp-validation-for="LastName" class="text-danger"></span>
+    <div>
+        <label for="LastName">Last Name</label>
+        <input type="text" id="LastName" name="LastName" value="@Model.LastName" />
     </div>
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" disabled />
-        <span asp-validation-for="Email" class="text-danger"></span>
+    @*<div>
+        <label for="Email">Email</label>
+        <input type="email" id="Email" name="Email" value="@Model.Email" />
+    </div>*@
+    <div>
+        <label for="StreetName">Street Name</label>
+        <input type="text" id="StreetName" name="StreetName" value="@Model.StreetName" />
     </div>
-    <div class="form-group">
-        <label asp-for="StreetName"></label>
-        <input asp-for="StreetName" class="form-control" />
-        <span asp-validation-for="StreetName" class="text-danger"></span>
+    <div>
+        <label for="PostalCode">Postal Code</label>
+        <input type="text" id="PostalCode" name="PostalCode" value="@Model.PostalCode" />
     </div>
-    <div class="form-group">
-        <label asp-for="PostalCode"></label>
-        <input asp-for="PostalCode" class="form-control" />
-        <span asp-validation-for="PostalCode" class="text-danger"></span>
+    <div>
+        <label for="City">City</label>
+        <input type="text" id="City" name="City" value="@Model.City" />
     </div>
-    <div class="form-group">
-        <label asp-for="City"></label>
-        <input asp-for="City" class="form-control" />
-        <span asp-validation-for="City" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit">Save Changes</button>
 </form>
