@@ -15,7 +15,7 @@ public class SeedAdminAccountService
 
     public async Task SeedAdminAccount()
     {
-        var roleName = "admin";
+        var roleName = "Admin";
         var email = "admin@example.com";
         var password = "admin123";
 
