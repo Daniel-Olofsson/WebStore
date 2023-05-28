@@ -1,0 +1,42 @@
+﻿@model WebStore.Models.ViewModels.ProductViewModel
+@using System.Linq
+
+﻿<section class="best-collection">
+    <div class="container">
+        <h1 class="collection-title">Best Collection</h1>
+        <ul class="categories">
+            @foreach (var genre in Model.Products.Where(p => p.CollectionStatus == "TopCollection").Select(p => p.Genre).Distinct())
+            {
+                <li class="category-item">@genre</li>
+            }
+        </ul>
+        <div class="collection-grid">
+            @if (Model != null)
+            {
+                var upToSaleProducts = Model.Products.Where(p => p.CollectionStatus == "TopCollection").Take(4);
+                foreach (var product in upToSaleProducts)
+                {
+                    <a href="@Url.Action("Details", "Home", new { id = product.Id })" class="collection-item">
+                        <img src="@product.ImageUrl" alt="">
+                        <div class="body">
+                            <div class="title">@product.Title</div>
+                            <div class="info">
+                                <div class="price">@product.Price.ToString("C")</div>
+                                <div class="status">Category: @product.Genre</div>
+                                <i class="add-cart fa-regular fa-cart-plus"></i>
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
+            else
+            {
+                <p>No products available.</p>
+            }
+
+        </div>
+        <div class="load-more">
+            <a href="@Url.Action("AllTopCollectionProducts", "Home")" class="btn-outline-white">LOAD MORE <i class="fa-solid fa-rotate-right"></i></a>
+        </div>
+    </div>
+</section>

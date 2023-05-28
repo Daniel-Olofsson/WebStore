@@ -23,4 +23,5 @@ public class UserEntity
     public string? PostalCode { get; set; }
     public string? City { get; set; }
     public IdentityUser User { get; set; }
+    
 }

@@ -12,6 +12,9 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<SeedRolesService>();
 builder.Services.AddScoped<UserService>();
 
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ProductSeeder>();
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 {
     x.Password.RequiredLength = 4;
@@ -24,11 +27,13 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 
 var app = builder.Build();
 
-//seed roles
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 var seedRolesService = services.GetRequiredService<SeedRolesService>();
+var productSeeder = services.GetRequiredService<ProductSeeder>();
+
 seedRolesService.SeedAsync().Wait();
+productSeeder.SeedProducts();
 
 
 

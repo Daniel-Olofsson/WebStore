@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebStore.Contexts;
 
@@ -11,9 +12,11 @@ using WebStore.Contexts;
 namespace WebStore.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    partial class IdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20230524174008_InitialProduct")]
+    partial class InitialProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,12 +54,12 @@ namespace WebStore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "da83f837-267f-493a-be85-074efc69360b",
+                            Id = "a026e7ed-36cb-4d7f-94ff-cecfbdc17569",
                             Name = "admin"
                         },
                         new
                         {
-                            Id = "4a57b8e1-0534-4eb6-a7a9-d7446141e02f",
+                            Id = "0630721f-fb75-4c05-94f2-8b910f6da4e1",
                             Name = "user"
                         });
                 });
@@ -268,10 +271,6 @@ namespace WebStore.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CollectionStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Genre")
                         .HasColumnType("nvarchar(max)");

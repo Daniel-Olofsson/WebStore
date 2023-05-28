@@ -29,4 +29,6 @@ public class IdentityContext : IdentityDbContext
         //     _roleManager.CreateAsync(new IdentityRole("user")).Wait();
         //}
     }
+
+    public DbSet<WebStore.Models.ProductEntity> ProductEntity { get; set; } = default!;
 }

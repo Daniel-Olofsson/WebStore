@@ -1,0 +1,39 @@
+﻿@model WebStore.Models.ViewModels.ProductViewModel
+@using WebStore.Models.ViewModels
+
+<section class="top-selling">
+    <div class="container-fluid">
+        <h1 class="collection-title">Top selling products in this week</h1>
+        <div class="collection-grid">
+            @if (Model?.Products != null)
+            {
+                var topSellingProducts = Model.Products.Where(p => p.CollectionStatus == "TopSelling").ToList();
+                if (topSellingProducts.Any())
+                {
+                    foreach (var product in topSellingProducts)
+                    {
+                        <a href="@Url.Action("Details", "Home", new { id = product.Id })" class="collection-item">
+                            <img src="@product.ImageUrl" alt="">
+                            <div class="body">
+                                <div class="title">@product.Title</div>
+                                <div class="info">
+                                    <div class="price">@product.Price.ToString("C")</div>
+                                    <i class="add-cart fa-regular fa-cart-plus"></i>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+                else
+                {
+                    <p>No top selling products available.</p>
+                }
+            }
+        </div>
+        <div class="load-more">
+            <button class="btn-outline-white me-1" onclick="randomizeProducts()"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="btn-outline-white ms-1" onclick="resetProducts()"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </div>
+</section>
+

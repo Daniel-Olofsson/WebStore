@@ -1,0 +1,43 @@
+﻿@model List<WebStore.Models.ViewModels.UserEditVM>
+
+<h1>All Users</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <form method="post" action="/Admin/EditUser">
+                        <input type="hidden" name="UserId" value="@user.UserId" />
+                <td>
+                    <input type="email" name="Email" value="@user.Email" />
+                </td>
+
+                <td>
+                    <button type="submit">Save</button>
+                </td>
+                </form>
+                </td>
+
+                <td>
+                    <form method="post" action="/Admin/DeleteUser">
+                        <input type="hidden" name="id" value="@user.UserId" />
+                <td>
+                    <button type="submit">Delete</button>
+                </td>
+                </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
